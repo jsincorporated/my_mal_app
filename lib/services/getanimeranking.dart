@@ -16,7 +16,7 @@ Future<List<Anime>> GetAnimeRanking(String type) async {
     var response = await get(Uri.parse(query),
         headers: {'X-MAL-CLIENT-ID': '66cf5a1add330c4e1cec38220f0bed3b'});
     List data = jsonDecode(response.body)['data'];
-    print(data);
+    // print(data);
 
     return data.map((node) {
       return Anime(
