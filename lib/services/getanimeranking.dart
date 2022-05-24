@@ -11,7 +11,7 @@ Future<List<Anime>> GetAnimeRanking(String type) async {
 
   try {
     String query =
-        'https://api.myanimelist.net/v2/anime/ranking?ranking_type=$type&fields=title,main_picture,mean,status,num_episodes,start_season&limit=40';
+        'https://api.myanimelist.net/v2/anime/ranking?ranking_type=$type&fields=title,main_picture,mean,status,num_episodes,start_season&limit=30';
 
     var response = await get(Uri.parse(query),
         headers: {'X-MAL-CLIENT-ID': '66cf5a1add330c4e1cec38220f0bed3b'});
@@ -21,7 +21,7 @@ Future<List<Anime>> GetAnimeRanking(String type) async {
     return data.map((node) {
       return Anime(
           name: node['node']['title'],
-          picture: node['node']['main_picture']['large'],
+          picture: node['node']['main_picture']['medium'],
           score: node['node']['mean'],
           status: node['node']['status'],
           num_episodes: node['node']['num_episodes'],
