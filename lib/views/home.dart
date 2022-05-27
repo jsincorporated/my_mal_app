@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_mal_app/custom_widgets/HorizontalScroller.dart';
+import 'package:my_mal_app/custom_widgets/LargeHorizontalScroller.dart';
 import 'package:my_mal_app/services/getanimeranking.dart';
 
 import '../items/anime.dart';
@@ -71,7 +72,7 @@ class _HomeState extends State<Home> {
                 ),
               ],
             ),
-            HorizontalScroller(category: airing),
+            LargeHorizontalScroller(category: airing),
             Row(
               children: [
                 SizedBox(

@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_mal_app/views/animepage.dart';
 import 'package:my_mal_app/views/explorepage.dart';
 import 'package:my_mal_app/views/home.dart';
 import 'package:my_mal_app/views/profilepage.dart';
 
 void main() {
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: MainPage(),
+    initialRoute: '/',
+    routes: {
+      '/animepage': (context) => AnimePage(),
+    },
   ));
 }
 

@@ -22,6 +22,7 @@ Future<List<Anime>> GetAnimeRanking(String type) async {
       return Anime(
           name: node['node']['title'],
           picture: node['node']['main_picture']['medium'],
+          picturehd: node['node']['main_picture']['large'],
           score: node['node']['mean'],
           status: node['node']['status'],
           num_episodes: node['node']['num_episodes'],

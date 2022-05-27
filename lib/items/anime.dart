@@ -1,6 +1,7 @@
 class Anime {
   String name;
   String picture;
+  String picturehd;
   double score;
   String status;
   int num_episodes;
@@ -9,6 +10,7 @@ class Anime {
   Anime(
       {required this.name,
       required this.picture,
+      required this.picturehd,
       required this.score,
       required this.start_season,
       required this.num_episodes,

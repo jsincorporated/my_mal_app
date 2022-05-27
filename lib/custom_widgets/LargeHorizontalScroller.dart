@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../items/anime.dart';
 
-class HorizontalScroller extends StatelessWidget {
-  const HorizontalScroller({
+class LargeHorizontalScroller extends StatelessWidget {
+  const LargeHorizontalScroller({
     Key? key,
     required this.category,
   }) : super(key: key);
@@ -15,7 +15,7 @@ class HorizontalScroller extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 205,
+      height: 300,
       width: MediaQuery.of(context).size.width,
       child: FutureBuilder(
           future: category,
@@ -47,24 +47,24 @@ class HorizontalScroller extends StatelessWidget {
                     child: Stack(
                       children: [
                         Container(
-                          width: 130,
+                          width: 350,
                           decoration: BoxDecoration(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
                             image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: NetworkImage(anime.picture),
+                              image: NetworkImage(anime.picturehd),
                             ),
                           ),
                         ),
                         Column(
                           children: [
                             const SizedBox(
-                              height: 152,
+                              height: 242,
                             ),
                             Container(
-                              height: 45,
-                              width: 130,
+                              height: 50,
+                              width: 350,
                               decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(10),
@@ -99,10 +99,7 @@ class HorizontalScroller extends StatelessWidget {
                                     height: 45,
                                     width: 130,
                                     child: TextButton.icon(
-                                      onPressed: () {
-                                        Navigator.pushNamed(
-                                            context, '/animepage');
-                                      },
+                                      onPressed: () {},
                                       icon: const Align(
                                         alignment: Alignment.bottomLeft,
                                         child: Icon(
