@@ -2,7 +2,7 @@ class Anime {
   String name;
   String picture;
   String picturehd;
-  double score;
+  num score;
   String status;
   int num_episodes;
   Map start_season;

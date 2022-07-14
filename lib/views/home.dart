@@ -1,10 +1,13 @@
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_mal_app/custom_widgets/HorizontalScroller.dart';
 import 'package:my_mal_app/custom_widgets/LargeHorizontalScroller.dart';
+import 'package:my_mal_app/services/apptheme.dart';
 import 'package:my_mal_app/services/getanimeranking.dart';
 
 import '../items/anime.dart';
@@ -30,118 +33,129 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Browse Anime',
-          style: GoogleFonts.ubuntu(
-            fontStyle: FontStyle.normal,
-            fontWeight: FontWeight.bold,
-            fontSize: 19,
-            letterSpacing: 0.3,
-            color: Colors.black,
+    return DynamicColorBuilder(
+      builder: ((lightDynamic, darkDynamic) {
+        bool isDarkMode =
+            MediaQuery.of(context).platformBrightness == Brightness.dark;
+        final lightThemeData = AppTheme.lightTheme(lightDynamic);
+        final darkThemeData = AppTheme.darkTheme(darkDynamic);
+
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(
+              'Browse Anime',
+              style: GoogleFonts.ubuntu(
+                fontStyle: FontStyle.normal,
+                fontWeight: FontWeight.bold,
+                fontSize: 19,
+                letterSpacing: 0.3,
+                // color: Colors.black,
+              ),
+            ),
+            centerTitle: false,
+            elevation: 0,
+            // backgroundColor: Colors.white,
           ),
-        ),
-        centerTitle: false,
-        elevation: 0,
-        backgroundColor: Colors.white,
-      ),
-      body: Container(
-        color: Colors.white,
-        child: ListView(
-          physics: const BouncingScrollPhysics(),
-          // padding: EdgeInsets.all(12),
-          children: [
-            Row(
+          body: Container(
+            color: isDarkMode
+                ? darkThemeData.colorScheme.background
+                : lightThemeData.colorScheme.background,
+            child: ListView(
+              physics: const BouncingScrollPhysics(),
+              // padding: EdgeInsets.all(12),
               children: [
-                SizedBox(
-                  height: 40,
-                  width: 135,
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      'Currently Airing',
-                      style: GoogleFonts.ubuntu(
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                        letterSpacing: 0.3,
+                Row(
+                  children: [
+                    SizedBox(
+                      height: 40,
+                      width: 135,
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Currently Airing',
+                          style: GoogleFonts.ubuntu(
+                            fontStyle: FontStyle.normal,
+                            // fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            letterSpacing: 0.3,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                  ],
+                ),
+                LargeHorizontalScroller(category: airing),
+                Row(
+                  children: [
+                    SizedBox(
+                      height: 40,
+                      width: 80,
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Popular',
+                          style: GoogleFonts.ubuntu(
+                            fontStyle: FontStyle.normal,
+                            // fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            letterSpacing: 0.3,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                HorizontalScroller(category: popular),
+                Row(
+                  children: [
+                    SizedBox(
+                      height: 40,
+                      width: 90,
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Top Anime',
+                          style: GoogleFonts.ubuntu(
+                            fontStyle: FontStyle.normal,
+                            // fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            letterSpacing: 0.3,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                HorizontalScroller(category: topAnime),
+                Row(
+                  children: [
+                    SizedBox(
+                      height: 40,
+                      width: 100,
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Top Movies',
+                          style: GoogleFonts.ubuntu(
+                            fontStyle: FontStyle.normal,
+                            // fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            letterSpacing: 0.3,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                HorizontalScroller(category: topMovies),
+                SizedBox(
+                  height: 20,
                 ),
               ],
             ),
-            LargeHorizontalScroller(category: airing),
-            Row(
-              children: [
-                SizedBox(
-                  height: 40,
-                  width: 80,
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      'Popular',
-                      style: GoogleFonts.ubuntu(
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                        letterSpacing: 0.3,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            HorizontalScroller(category: popular),
-            Row(
-              children: [
-                SizedBox(
-                  height: 40,
-                  width: 90,
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      'Top Anime',
-                      style: GoogleFonts.ubuntu(
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                        letterSpacing: 0.3,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            HorizontalScroller(category: topAnime),
-            Row(
-              children: [
-                SizedBox(
-                  height: 40,
-                  width: 100,
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      'Top Movies',
-                      style: GoogleFonts.ubuntu(
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                        letterSpacing: 0.3,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            HorizontalScroller(category: topMovies),
-            SizedBox(
-              height: 20,
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      }),
     );
   }
 }

@@ -1,17 +1,26 @@
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_mal_app/services/apptheme.dart';
 import 'package:my_mal_app/views/animepage.dart';
 import 'package:my_mal_app/views/explorepage.dart';
 import 'package:my_mal_app/views/home.dart';
 import 'package:my_mal_app/views/profilepage.dart';
 
 void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: MainPage(),
-    initialRoute: '/',
-    routes: {
-      '/animepage': (context) => AnimePage(),
+  runApp(DynamicColorBuilder(
+    builder: (lightDynamic, darkDynamic) {
+      return MaterialApp(
+        theme: AppTheme.lightTheme(lightDynamic),
+        darkTheme: AppTheme.darkTheme(darkDynamic),
+        debugShowCheckedModeBanner: false,
+        home: MainPage(),
+        initialRoute: '/',
+        routes: {
+          '/animepage': (context) => AnimePage(),
+        },
+      );
     },
   ));
 }
@@ -37,17 +46,18 @@ class _MainPageState extends State<MainPage> {
       body: screens[index],
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-            indicatorColor: Colors.blue[100],
+            // indicatorColor: Colors.blue[100],
             labelTextStyle: MaterialStateProperty.all(
-              GoogleFonts.ubuntu(
-                fontStyle: FontStyle.normal,
-                fontWeight: FontWeight.bold,
-                fontSize: 15,
-                letterSpacing: 0.3,
-              ),
-            )),
+          GoogleFonts.openSans(
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.w600,
+            fontSize: 15,
+            letterSpacing: 0.3,
+          ),
+        )),
         child: NavigationBar(
-          height: 60,
+          // backgroundColor: Color.fromARGB(255, 233, 249, 252),
+          height: 80,
           selectedIndex: index,
           onDestinationSelected: (index) {
             setState(() {
