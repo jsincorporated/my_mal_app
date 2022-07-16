@@ -23,7 +23,7 @@ class LargeHorizontalScroller extends StatelessWidget {
       final darkThemeData = AppTheme.darkTheme(darkDynamic);
 
       return Container(
-        height: 225,
+        height: 250,
         width: MediaQuery.of(context).size.width,
         child: FutureBuilder(
             future: category,
@@ -59,100 +59,93 @@ class LargeHorizontalScroller extends StatelessWidget {
                           Navigator.pushNamed(context, '/animepage');
                         },
                         borderRadius: BorderRadius.circular(10),
-                        child: Stack(
+                        child: Column(
                           children: [
                             Container(
+                              height: 197,
                               width: 300,
                               decoration: BoxDecoration(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
+                                borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(10),
+                                    topRight: Radius.circular(10)),
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
                                   image: NetworkImage(anime.picturehd),
                                 ),
                               ),
                             ),
-                            Column(
-                              children: [
-                                const SizedBox(
-                                  height: 172,
-                                ),
-                                Container(
-                                  height: 45,
-                                  width: 300,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(10),
-                                        bottomRight: Radius.circular(10)),
-                                    color: isDarkMode
-                                        ? darkThemeData
-                                            .colorScheme.surfaceVariant
-                                        : lightThemeData
-                                            .colorScheme.surfaceVariant,
+                            Container(
+                              height: 45,
+                              width: 300,
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(10),
+                                    bottomRight: Radius.circular(10)),
+                                // color: isDarkMode
+                                //     ? darkThemeData.colorScheme.surfaceVariant
+                                //     : lightThemeData.colorScheme.surfaceVariant,
+                              ),
+                              child: Stack(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      top: 5,
+                                      left: 5,
+                                      right: 1,
+                                      bottom: 25,
+                                    ),
+                                    child: Text(
+                                      anime.name,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: GoogleFonts.ubuntu(
+                                          fontStyle: FontStyle.normal,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12,
+                                          letterSpacing: 0.3,
+                                          color: isDarkMode
+                                              ? darkThemeData
+                                                  .colorScheme.onSurface
+                                              : lightThemeData
+                                                  .colorScheme.onSurface),
+                                    ),
                                   ),
-                                  child: Stack(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                          top: 5,
-                                          left: 5,
-                                          right: 1,
-                                          bottom: 25,
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      top: 20,
+                                      left: 5,
+                                      right: 1,
+                                      bottom: 0,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.star,
+                                          color: isDarkMode
+                                              ? darkThemeData
+                                                  .colorScheme.onSurfaceVariant
+                                              : lightThemeData
+                                                  .colorScheme.onSurfaceVariant,
                                         ),
-                                        child: Text(
-                                          anime.name,
+                                        Text(
+                                          anime.score.toString(),
                                           overflow: TextOverflow.ellipsis,
                                           style: GoogleFonts.ubuntu(
-                                              fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 12,
-                                              letterSpacing: 0.3,
-                                              color: isDarkMode
-                                                  ? darkThemeData
-                                                      .colorScheme.onSurface
-                                                  : lightThemeData
-                                                      .colorScheme.onSurface),
+                                            fontStyle: FontStyle.normal,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12,
+                                            letterSpacing: 0.3,
+                                            color: isDarkMode
+                                                ? darkThemeData.colorScheme
+                                                    .onSurfaceVariant
+                                                : lightThemeData.colorScheme
+                                                    .onSurfaceVariant,
+                                          ),
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                          top: 20,
-                                          left: 5,
-                                          right: 1,
-                                          bottom: 0,
-                                        ),
-                                        child: Row(
-                                          children: [
-                                            Icon(
-                                              Icons.star,
-                                              color: isDarkMode
-                                                  ? darkThemeData.colorScheme
-                                                      .onSurfaceVariant
-                                                  : lightThemeData.colorScheme
-                                                      .onSurfaceVariant,
-                                            ),
-                                            Text(
-                                              anime.score.toString(),
-                                              overflow: TextOverflow.ellipsis,
-                                              style: GoogleFonts.ubuntu(
-                                                fontStyle: FontStyle.normal,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 12,
-                                                letterSpacing: 0.3,
-                                                color: isDarkMode
-                                                    ? darkThemeData.colorScheme
-                                                        .onSurfaceVariant
-                                                    : lightThemeData.colorScheme
-                                                        .onSurfaceVariant,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                )
-                              ],
+                                ],
+                              ),
                             ),
                           ],
                         ),
