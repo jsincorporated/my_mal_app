@@ -1,16 +1,4 @@
 # my_mal_app
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+unofficial mal app. work in progress
+![Screenshot_20220521-215343_whatsapp_opener (1)](https://raw.githubusercontent.com/jsincorporated/my_mal_app/main/assets/my_mal_list_screenshot.png?token=GHSAT0AAAAAAB3EC57GXTP6CG2N2NZHQTRKY73HHCA)
