@@ -77,9 +77,9 @@ class HorizontalScroller extends StatelessWidget {
                                 borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(10),
                                     bottomRight: Radius.circular(10)),
-                                // color: isDarkMode
-                                //     ? darkThemeData.colorScheme.surfaceVariant
-                                //     : lightThemeData.colorScheme.surfaceVariant,
+                                color: isDarkMode
+                                    ? darkThemeData.colorScheme.surfaceVariant
+                                    : lightThemeData.colorScheme.surfaceVariant,
                               ),
                               child: Stack(
                                 children: [

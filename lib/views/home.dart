@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_mal_app/custom_widgets/HorizontalScroller.dart';
 import 'package:my_mal_app/custom_widgets/LargeHorizontalScroller.dart';
 import 'package:my_mal_app/services/apptheme.dart';
+import 'package:my_mal_app/services/constants.dart';
 import 'package:my_mal_app/services/getanimeranking.dart';
 
 import '../items/anime.dart';
@@ -47,7 +48,7 @@ class _HomeState extends State<Home> {
               style: GoogleFonts.ubuntu(
                 fontStyle: FontStyle.normal,
                 fontWeight: FontWeight.bold,
-                fontSize: 19,
+                fontSize: 21,
                 letterSpacing: 0.3,
                 // color: Colors.black,
               ),
@@ -64,25 +65,85 @@ class _HomeState extends State<Home> {
               physics: const BouncingScrollPhysics(),
               // padding: EdgeInsets.all(12),
               children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      height: 40,
-                      width: 135,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          'Currently Airing',
-                          style: GoogleFonts.ubuntu(
-                            fontStyle: FontStyle.normal,
-                            // fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                            letterSpacing: 0.3,
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(
+                        height: 60,
+                        width: 180,
+                        child: FilledButton.tonalIcon(
+                          onPressed: () {},
+                          icon: Icon(Icons.bar_chart_rounded),
+                          label: Text(
+                            'Top Anime',
+                            style: GoogleFonts.ubuntu(
+                              fontStyle: FontStyle.normal,
+                              fontSize: 18,
+                              letterSpacing: 0.3,
+                              // color: Colors.black,
+                            ),
+                          ),
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                            ),
+                            backgroundColor: MaterialStateProperty.all(
+                                Color.fromARGB(255, 229, 227, 227)),
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: 60,
+                        width: 180,
+                        child: FilledButton.tonalIcon(
+                          onPressed: () {},
+                          icon: Icon(Icons.sunny_snowing),
+                          label: Text(
+                            'Seasonal',
+                            style: GoogleFonts.ubuntu(
+                              fontStyle: FontStyle.normal,
+                              fontSize: 18,
+                              letterSpacing: 0.3,
+                              // color: Colors.black,
+                            ),
+                          ),
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                            ),
+                            backgroundColor: MaterialStateProperty.all(
+                                Color.fromARGB(255, 229, 227, 227)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: SizedBox(
+                    height: 40,
+                    width: 135,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Currently Airing',
+                        style: GoogleFonts.ubuntu(
+                          fontStyle: FontStyle.normal,
+                          // fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          letterSpacing: 0.3,
+                        ),
+                      ),
                     ),
-                  ],
+                  ),
                 ),
                 LargeHorizontalScroller(category: airing),
                 Row(

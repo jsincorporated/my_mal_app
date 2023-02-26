@@ -77,13 +77,13 @@ class LargeHorizontalScroller extends StatelessWidget {
                             Container(
                               height: 45,
                               width: 300,
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(10),
                                     bottomRight: Radius.circular(10)),
-                                // color: isDarkMode
-                                //     ? darkThemeData.colorScheme.surfaceVariant
-                                //     : lightThemeData.colorScheme.surfaceVariant,
+                                color: isDarkMode
+                                    ? darkThemeData.colorScheme.surfaceVariant
+                                    : lightThemeData.colorScheme.surfaceVariant,
                               ),
                               child: Stack(
                                 children: [
@@ -98,15 +98,16 @@ class LargeHorizontalScroller extends StatelessWidget {
                                       anime.name,
                                       overflow: TextOverflow.ellipsis,
                                       style: GoogleFonts.ubuntu(
-                                          fontStyle: FontStyle.normal,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12,
-                                          letterSpacing: 0.3,
-                                          color: isDarkMode
-                                              ? darkThemeData
-                                                  .colorScheme.onSurface
-                                              : lightThemeData
-                                                  .colorScheme.onSurface),
+                                        fontStyle: FontStyle.normal,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12,
+                                        letterSpacing: 0.3,
+                                        color: isDarkMode
+                                            ? darkThemeData
+                                                .colorScheme.onSurface
+                                            : lightThemeData
+                                                .colorScheme.onSurface,
+                                      ),
                                     ),
                                   ),
                                   Padding(
