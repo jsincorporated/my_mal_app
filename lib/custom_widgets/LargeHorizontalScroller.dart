@@ -1,4 +1,5 @@
 import 'package:dynamic_color/dynamic_color.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,8 +18,7 @@ class LargeHorizontalScroller extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DynamicColorBuilder(builder: ((lightDynamic, darkDynamic) {
-      final isDarkMode =
-          MediaQuery.of(context).platformBrightness == Brightness.dark;
+      final isDarkMode = MediaQuery.of(context).platformBrightness == Brightness.dark;
       final lightThemeData = AppTheme.lightTheme(lightDynamic);
       final darkThemeData = AppTheme.darkTheme(darkDynamic);
 
@@ -30,9 +30,7 @@ class LargeHorizontalScroller extends StatelessWidget {
             builder: (context, AsyncSnapshot<List<Anime>> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return SpinKitRing(
-                  color: isDarkMode
-                      ? darkThemeData.colorScheme.secondary
-                      : lightThemeData.colorScheme.secondary,
+                  color: isDarkMode ? darkThemeData.colorScheme.secondary : lightThemeData.colorScheme.secondary,
                 );
               } else if (snapshot.hasError) {
                 return const Text('An error has occured while loading anime');
@@ -65,9 +63,7 @@ class LargeHorizontalScroller extends StatelessWidget {
                               height: 197,
                               width: 300,
                               decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(10),
-                                    topRight: Radius.circular(10)),
+                                borderRadius: const BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
                                   image: NetworkImage(anime.picturehd),
@@ -78,12 +74,8 @@ class LargeHorizontalScroller extends StatelessWidget {
                               height: 45,
                               width: 300,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(10),
-                                    bottomRight: Radius.circular(10)),
-                                color: isDarkMode
-                                    ? darkThemeData.colorScheme.surfaceVariant
-                                    : lightThemeData.colorScheme.surfaceVariant,
+                                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
+                                color: isDarkMode ? darkThemeData.colorScheme.surfaceVariant : lightThemeData.colorScheme.surfaceVariant,
                               ),
                               child: Stack(
                                 children: [
@@ -102,11 +94,7 @@ class LargeHorizontalScroller extends StatelessWidget {
                                         fontWeight: FontWeight.bold,
                                         fontSize: 12,
                                         letterSpacing: 0.3,
-                                        color: isDarkMode
-                                            ? darkThemeData
-                                                .colorScheme.onSurface
-                                            : lightThemeData
-                                                .colorScheme.onSurface,
+                                        color: isDarkMode ? darkThemeData.colorScheme.onSurface : lightThemeData.colorScheme.onSurface,
                                       ),
                                     ),
                                   ),
@@ -120,12 +108,10 @@ class LargeHorizontalScroller extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         Icon(
-                                          Icons.star,
-                                          color: isDarkMode
-                                              ? darkThemeData
-                                                  .colorScheme.onSurfaceVariant
-                                              : lightThemeData
-                                                  .colorScheme.onSurfaceVariant,
+                                          CupertinoIcons.star_fill,
+                                          size: 17,
+                                          color:
+                                              isDarkMode ? darkThemeData.colorScheme.onSurfaceVariant : lightThemeData.colorScheme.onSurfaceVariant,
                                         ),
                                         Text(
                                           anime.score.toString(),
@@ -135,11 +121,8 @@ class LargeHorizontalScroller extends StatelessWidget {
                                             fontWeight: FontWeight.bold,
                                             fontSize: 12,
                                             letterSpacing: 0.3,
-                                            color: isDarkMode
-                                                ? darkThemeData.colorScheme
-                                                    .onSurfaceVariant
-                                                : lightThemeData.colorScheme
-                                                    .onSurfaceVariant,
+                                            color:
+                                                isDarkMode ? darkThemeData.colorScheme.onSurfaceVariant : lightThemeData.colorScheme.onSurfaceVariant,
                                           ),
                                         ),
                                       ],

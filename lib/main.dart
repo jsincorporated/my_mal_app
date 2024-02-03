@@ -15,10 +15,10 @@ void main() {
         theme: AppTheme.lightTheme(lightDynamic),
         darkTheme: AppTheme.darkTheme(darkDynamic),
         debugShowCheckedModeBanner: false,
-        home: MainPage(),
+        home: const MainPage(),
         initialRoute: '/',
         routes: {
-          '/animepage': (context) => AnimePage(),
+          '/animepage': (context) => const AnimePage(),
         },
       );
     },
@@ -34,11 +34,11 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   final screens = [
-    ProfilePage(),
-    Home(),
-    ExplorePage(),
+    const Home(),
+    const ExplorePage(),
+    const ProfilePage(),
   ];
-  int index = 1;
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -66,11 +66,6 @@ class _MainPageState extends State<MainPage> {
           },
           destinations: const [
             NavigationDestination(
-              icon: Icon(Icons.person_outline),
-              selectedIcon: Icon(Icons.person),
-              label: 'Profile',
-            ),
-            NavigationDestination(
               icon: Icon(Icons.home_outlined),
               selectedIcon: Icon(Icons.home),
               label: 'Home',
@@ -78,6 +73,11 @@ class _MainPageState extends State<MainPage> {
             NavigationDestination(
               icon: Icon(Icons.search),
               label: 'Explore',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.person_outline),
+              selectedIcon: Icon(Icons.person),
+              label: 'Profile',
             ),
           ],
         ),
